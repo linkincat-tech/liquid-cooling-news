@@ -227,8 +227,8 @@ class LiquidCoolingNewsCollector:
             "lang": "ja",
             "weight": "high"
         },
-        "Google News (JA) - Liquid Cooling DC": {
-            "url": "https://news.google.com/rss/search?q=液冷+データセンター+when:1d&hl=ja&gl=JP&ceid=JP:ja",
+        "Google News (JA) - Liquid Cooling System": {
+            "url": "https://news.google.com/rss/search?q=液冷システム+when:1d&hl=ja&gl=JP&ceid=JP:ja",
             "lang": "ja",
             "weight": "high"
         },
@@ -284,9 +284,9 @@ class LiquidCoolingNewsCollector:
             "immersion cooling", "direct liquid cooling", "dlc"
         ],
         "ja": [
-            "nvidia gb300", "液冷", "データセンター", "コールドプレート",
-            "cdu", "uqd", "coolit", "aiサーバー", "google tpu",
-            "液冷認証", "ai データセンター 日本", "nvidia rubin",
+            "nvidia gb300", "液冷", "コールドプレート",
+            "cdu", "uqd", "coolit", "aiサーバー液冷", "google tpu",
+            "液冷認証", "nvidia rubin",
             "浸漬冷却", "直接液体冷却"
         ],
         "zh": [
@@ -471,7 +471,7 @@ class LiquidCoolingNewsCollector:
             "Google News (EN) - Japan AI Data Center": "❄️Japan",
             "Google News (EN) - NVIDIA Rubin": "❄️Rubin",
             "Google News (JA) - NVIDIA GB300": "❄️JP-GB300",
-            "Google News (JA) - Liquid Cooling DC": "❄️JP-Liquid",
+            "Google News (JA) - Liquid Cooling System": "❄️JP-Liquid",
             "Google News (JA) - Cold Plate AI": "❄️JP-ColdPlate",
             "Google News (JA) - CDU Cooling": "❄️JP-CDU",
             "Google News (JA) - UQD Cooling": "❄️JP-UQD",
