@@ -713,21 +713,16 @@ class LiquidCoolingNewsCollector:
         # Google News 聚合排在后面
         sorted_articles = sorted(articles, key=lambda a: self._get_source_weight(a.source_name))
 
-        # 推送数量控制：英语源目标 15-20 条；日语源独立最多 20 条。
-        # 宁缺毋滥原则：如果英语组不足 15 条，则该组有多少推多少。
-        TARGET_MIN = 15
-        TARGET_MAX = 20
+        # 推送数量控制：英语源目标 20 条；日语源目标 20 条。
+        # 不足 20 条则有多少推多少。
+        TARGET_COUNT = 20
         JAPANESE_SOURCES = [name for name in self.RSS_FEEDS.keys() if "(JA)" in name]
 
         english_articles = [a for a in sorted_articles if a.source_name not in JAPANESE_SOURCES]
         japanese_articles = [a for a in sorted_articles if a.source_name in JAPANESE_SOURCES]
 
-        if len(english_articles) >= TARGET_MIN:
-            selected_english = english_articles[:TARGET_MAX]
-        else:
-            selected_english = english_articles
-
-        selected_japanese = japanese_articles[:20]
+        selected_english = english_articles[:TARGET_COUNT]
+        selected_japanese = japanese_articles[:TARGET_COUNT]
         selected_articles = selected_english + selected_japanese
 
         print(f"\n📊 文章分布统计:")
@@ -737,8 +732,8 @@ class LiquidCoolingNewsCollector:
         for name, count in sorted(source_counts.items(), key=lambda x: self._get_source_weight(x[0])):
             weight_label = "高权重" if self._get_source_weight(name) == 0 else "低权重"
             print(f"   - {name}: {count} 条 ({weight_label})")
-        print(f"\n📋 英语/专业源选中: {len(selected_english)} 条 (目标范围: {TARGET_MIN}-{TARGET_MAX})")
-        print(f"📋 日语源选中: {len(selected_japanese)} 条 (最多 20 条)")
+        print(f"\n📋 英语源选中: {len(selected_english)} 条 (目标: 20条)")
+        print(f"📋 日语源选中: {len(selected_japanese)} 条 (目标: 20条)")
         print(f"📋 最终合并简报: {len(selected_articles)} 条")
 
         if selected_articles:
